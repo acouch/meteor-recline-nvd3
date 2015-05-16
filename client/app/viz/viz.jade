@@ -1,0 +1,33 @@
+template(name="viz")
+  .container
+    .row
+      .col-md-12
+        h1 Define Variables
+        h2 Step {{step}}
+        #steps
+          .form-group
+            label Source
+            input(type="text", id="url", class="form-control", placeholder="url", value="#{url}")
+            label Backend
+            div {{backend}}
+          label Series
+            select.form-control
+              each options
+                option(value=key) #{name}
+          .form-group
+            label X-Field
+              select.form-control
+                option wtf
+          .form-group.relative
+            label.radio-inline Number
+            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Number" value="Number")
+            label.radio-inline String
+            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-String" value="String")
+            label.radio-inline Date
+            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Date" value="Date")
+            label.radio-inline Auto
+            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Auto" value="Auto" checked="")
+          div#controls.step-1
+            div#prev.btn.btn-default.pull-left Back
+            div#next.btn.btn-primary.pull-right Next
+
