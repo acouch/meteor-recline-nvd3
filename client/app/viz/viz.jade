@@ -18,15 +18,30 @@ template(name="viz")
             label X-Field
               select.form-control
                 option wtf
-          .form-group.relative
-            label.radio-inline Number
-            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Number" value="Number")
-            label.radio-inline String
-            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-String" value="String")
-            label.radio-inline Date
-            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Date" value="Date")
-            label.radio-inline Auto
-            input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Auto" value="Auto" checked="")
+          if step1
+            h1 wtf
+          else
+            h1 blowme
+          +if step1
+            .form-group.relative
+              label.radio-inline Number
+              input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Number" value="Number")
+              label.radio-inline String
+              input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-String" value="String")
+              label.radio-inline Date
+              input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Date" value="Date")
+              label.radio-inline Auto
+              input(type="radio" name="control-chart-x-data-type" id="control-chart-x-data-type-Auto" value="Auto" checked="")
+          else
+            ul#chart-selector
+              li.discreteBarChart.selected(data-selected="discreteBarChart")
+              li.multiBarChart(data-selected="multiBarChart")
+              li.stackedAreaChart(data-selected="stackedAreaChart")
+              li.pieChart(data-selected="pieChart")
+              li.lineChart(data-selected="lineChart")
+              li.lineWithFocusChart(data-selected="lineWithFocusChart")
+              li.scatterChart(data-selected="scatterChart")
+              li.cumulativeLineChart(data-selected="cumulativeLineChart")
           div#controls.step-1
             div#prev.btn.btn-default.pull-left Back
             div#next.btn.btn-primary.pull-right Next

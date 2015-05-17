@@ -34,7 +34,15 @@ Template.viz.helpers(
   isReady: -> Template.instance().ready().get()
   step: -> Template.instance().step.get()
   options: -> Template.instance().options.get()
-
+  step1: ->
+    step = Template.instance().step.get()
+    console.log(step)
+    if step == 1
+      console.log("step is 1")
+      true
+    else
+      console.log("step is 2")
+      false
 )
 
 Template.viz.events(
@@ -43,7 +51,6 @@ Template.viz.events(
     step = instance.step.get()
     step += 1
     instance.step.set(step)
-    console.log(@_id)
     Models.Viz.update(@_id, {
       $set:
         {step}
@@ -51,10 +58,13 @@ Template.viz.events(
 
   'click #prev': (event, instance) ->
     event.preventDefault()
-    console.log("next clicked")
     step = instance.step.get()
     step -= 1
     instance.step.set(step)
+    Models.Viz.update(@_id, {
+      $set:
+        {step}
+    })
 
   'focusout #url': (event, instance) ->
     console.log(event)
